@@ -1,38 +1,46 @@
 import { Router } from 'express';
-import Product from '../models/products';
+import { getCustomRepository } from 'typeorm';
+import ProductsRepository from '../repositories/ProductsRepository';
+import CreateProductService from '../services/CreateProductService';
 
 const productsRouter = Router();
 
-const products: Product[] = [];
+productsRouter.get('/', async (request, response) => {
+  const productsRepository = getCustomRepository(ProductsRepository);
 
-// List all products
-productsRouter.get('/', (request, response) => {
+  const products = await productsRepository.find();
+
   return response.json(products);
 });
 
-// Create a product
-productsRouter.post('/', (request, response) => {
-  const {
-    name,
-    description,
-    quantity,
-    price,
-    createdBy,
-    createdAt,
-  } = request.body;
+productsRouter.post('/', async (request, response) => {
+  try {
+    const {
+      name,
+      description,
+      quantity,
+      price,
+      createdBy,
+      deletedAt,
+      createdAt,
+    } = request.body;
 
-  const product = new Product(
-    name,
-    description,
-    quantity,
-    price,
-    createdBy,
-    createdAt,
-  );
+    const createProduct = new CreateProductService();
 
-  products.push(product);
+    const product = await createProduct.execute({
+      name,
+      description,
+      quantity,
+      price,
+      createdBy,
+      deletedAt,
+      createdAt,
+    });
 
-  return response.json(product);
+    return response.json(product);
+  } catch (err) {
+    return response.status(400).json({ error: err.message });
+  }
 });
 
 export default productsRouter;
