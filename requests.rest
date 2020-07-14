@@ -1,0 +1,18 @@
+###List All Products
+POST http://localhost:3000/products
+content-type: application/json;
+
+{
+	"name": "Alef Gay",
+	"description":  "Alef é gayzasso, e o Rodrigo fica gemendo sometimes.",
+	"quantity": 100,
+	"price" : 1,
+	"createdBy" : "rennes",
+	"createdAt" : "14-07-2020"
+}
+
+###List All Products
+GET http://localhost:3000/products
+
+###List one Product
+GET http://localhost:3000/product

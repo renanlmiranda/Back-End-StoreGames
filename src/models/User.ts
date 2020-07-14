@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('products')
-class Product {
+@Entity('users')
+class User {
   @PrimaryGeneratedColumn('uuid')
   _id: string;
 
@@ -9,16 +9,7 @@ class Product {
   name: string;
 
   @Column()
-  description: string;
-
-  @Column()
-  quantity: number;
-
-  @Column()
-  price: number;
-
-  @Column()
-  createdBy: string;
+  email: string;
 
   @Column('timestamp')
   createdAt: Date;
@@ -30,4 +21,4 @@ class Product {
   deletedAt: Date;
 }
 
-export default Product;
+export default User;
