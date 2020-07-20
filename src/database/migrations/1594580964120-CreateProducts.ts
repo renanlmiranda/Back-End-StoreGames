@@ -8,7 +8,7 @@ export default class CreateProducts1594580964120 implements MigrationInterface {
         columns: [
           {
             name: '_id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
@@ -31,9 +31,9 @@ export default class CreateProducts1594580964120 implements MigrationInterface {
           },
           {
             name: 'createdBy',
-            type: 'varchar',
+            type: 'uuid',
+            isNullable: true,
           },
-
           {
             name: 'createdAt',
             type: 'timestamp',
