@@ -1,6 +1,5 @@
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 import Product from '../models/Product';
-import ProductsRepository from '../repositories/ProductsRepository';
 
 interface Request {
   name: string;
@@ -22,7 +21,7 @@ class CreateProductService {
     deletedAt,
     createdAt,
   }: Request): Promise<Product> {
-    const productsRepository = getCustomRepository(ProductsRepository);
+    const productsRepository = getRepository(Product);
 
     if (!name) {
       throw Error('Name cannot be empty!');

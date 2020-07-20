@@ -4,7 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
+
+import User from './User';
 
 @Entity('products')
 class Product {
@@ -19,6 +23,10 @@ class Product {
 
   @Column()
   createdBy: string;
+
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'createdBy' })
+  salesman: User;
 
   @Column()
   quantity: number;
