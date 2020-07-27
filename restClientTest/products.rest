@@ -13,6 +13,7 @@ content-type: application/json
 
 ###List All Products
 GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTU4MjQ5NDAsImV4cCI6MTU5NTkxMTM0MCwic3ViIjoiMzRjZmU4MTktNzYxNS00MGY3LTljMGMtNGFmZjY5ZGRhZTM1In0.dtRTEY3G1o_nsBvkdWFcyWpQ-UtKhCaEEIuNAz0u4fY
 
 ###List one Product
 GET http://localhost:3000/products/48535e84-4ed5-4197-8c42-31015f45c936

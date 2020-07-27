@@ -2,8 +2,10 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 import CreateProductService from '../services/CreateProductService';
 import Product from '../models/Product';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const productsRouter = Router();
+productsRouter.use(ensureAuthenticated);
 
 productsRouter.get('/', async (request, response) => {
   const productsRepository = getRepository(Product);
@@ -11,13 +13,6 @@ productsRouter.get('/', async (request, response) => {
 
   return response.json(listAll);
 });
-
-// productsRouter.get('/:_id', async (request, response) => {
-//   const productsRepository = getRepository(Product);
-//   const { productId } = request.body;
-
-//   return response.json();
-// });
 
 productsRouter.post('/', async (request, response) => {
   try {
