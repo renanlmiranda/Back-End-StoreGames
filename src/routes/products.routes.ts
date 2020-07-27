@@ -1,7 +1,23 @@
 import { Router } from 'express';
+import { getRepository } from 'typeorm';
 import CreateProductService from '../services/CreateProductService';
+import Product from '../models/Product';
 
 const productsRouter = Router();
+
+productsRouter.get('/', async (request, response) => {
+  const productsRepository = getRepository(Product);
+  const listAll = await productsRepository.find({});
+
+  return response.json(listAll);
+});
+
+// productsRouter.get('/:_id', async (request, response) => {
+//   const productsRepository = getRepository(Product);
+//   const { productId } = request.body;
+
+//   return response.json();
+// });
 
 productsRouter.post('/', async (request, response) => {
   try {

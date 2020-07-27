@@ -6,13 +6,13 @@ content-type: application/json
 	"name" : "Test Product" ,
 	"description":  "Description Test",
 	"quantity": 100,
-	"price" : 1
+	"price" : 1,
+  "email": "testeee@teste.com.br",
+  "createdBy": "5d96e3cd-12eb-48dc-8fe4-7b69f4fab62e"
 }
 
 ###List All Products
 GET http://localhost:3000/products
 
 ###List one Product
-GET http://localhost:3000/product
-
-###Create User
+GET http://localhost:3000/products/48535e84-4ed5-4197-8c42-31015f45c936
