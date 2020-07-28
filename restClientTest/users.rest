@@ -7,3 +7,9 @@ content-type: application/json
   "email": "teste@teste.com",
   "password": "teste"
 }
+
+###Update Avatar.
+PATCH http://localhost:3000/users/avatar
+Content-Type: multipart/file
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTU4MjQ5NDAsImV4cCI6MTU5NTkxMTM0MCwic3ViIjoiMzRjZmU4MTktNzYxNS00MGY3LTljMGMtNGFmZjY5ZGRhZTM1In0.dtRTEY3G1o_nsBvkdWFcyWpQ-UtKhCaEEIuNAz0u4fY
+
